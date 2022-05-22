@@ -1,60 +1,44 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import './index.css'
 import { useMateriaPrima } from "../context/materiaprima";
 
 
 export function Material() {
-
+ 
   const { materiaPrima, setMateriaPrima } = useMateriaPrima()
-  // var saldo = materiaPrima.user.saldo
+  var saldo = materiaPrima.user.saldo
 
 
 
   // function FnVender() {
-  //   if (materiaPrima.papelao.estoque > 0) {
+  //   if (materiaPrima.papelao.estoque > 0) {+
 
   //     setSaldo(saldo + materiaPrima.papelao.venda)
   //     materiaPrima.papelao.estoque--
   //   }
   // }
 
-
-
+  
   function FnCompra(e) {
-    // if (saldo >= e.compra) {
 
-    // saldo = saldo - e.compra
-    // e.estoque++
+    setMateriaPrima(materiaPrima, { ...e, estoque: e.estoque++ })
+    console.log(materiaPrima)
 
-
-
-    // setUsers(users.filter((item, index) => index !== i))
-
- 
-
-
-
-
-  }
-  // } 
-
-
-
-
-
+  }  
 
   useEffect(() => {
 
-    console.log(materiaPrima)
+ 
+  }, [])
 
 
-  }, [materiaPrima])
+
 
 
   return (
     <div className="App">
       {/* <p className="saldo">
-        {' $ ' + saldo.toFixed(2)}
+        {' $ ' +  saldo.toFixed(2)}
       </p> */}
 
 
@@ -95,32 +79,10 @@ export function Material() {
 
               </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
-
         ))}
-
-
-
-
-
-
-
-
       </div>
-    </div >
+    </div>
   );
 }
 

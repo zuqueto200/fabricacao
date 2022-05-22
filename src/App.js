@@ -4,8 +4,6 @@ import { MateriaPrimaProvider } from "./context/materiaprima";
 
 export function App() {
 
-  
-
 
 
 
@@ -15,8 +13,8 @@ export function App() {
 
     <MateriaPrimaProvider>
 
-
       <Build />
+
 
     </MateriaPrimaProvider>
 
