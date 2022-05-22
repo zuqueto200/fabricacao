@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/fabricacao/static/css/main.5e9b1d58.css",
+    "main.js": "/fabricacao/static/js/main.1c36ab74.js",
+    "index.html": "/fabricacao/index.html",
+    "main.5e9b1d58.css.map": "/fabricacao/static/css/main.5e9b1d58.css.map",
+    "main.1c36ab74.js.map": "/fabricacao/static/js/main.1c36ab74.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5e9b1d58.css",
+    "static/js/main.1c36ab74.js"
+  ]
+}
