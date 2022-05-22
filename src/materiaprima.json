@@ -1,0 +1,25 @@
+{
+  "user": {
+    "saldo": 2.0
+  },
+
+  "materiaprima": [
+    {
+      "id": 0,
+      "nome": "Papelão",
+      "img": "../Materia Prima/papelao.png",
+      "estoque": 0,
+      "venda": 0.18,
+      "compra": 0.24
+    },
+
+    {
+      "id": 1,
+      "nome": "Plástico",
+      "img": "../Materia Prima/plastico.png",
+      "estoque": 0,
+      "venda": 0.30,
+      "compra": 0.42
+    }
+  ]
+}
