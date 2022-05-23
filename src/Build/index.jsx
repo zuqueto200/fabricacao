@@ -1,4 +1,5 @@
- import { Material } from '../Material';
+ import { Fabricacao } from '../Fabricacao';
+import { Material } from '../Material';
 import './index.css'
 
 
@@ -13,6 +14,7 @@ export function Build() {
         <div className="divBuild">
 
             <Material />
+            <Fabricacao/>
 
         </div>
     );

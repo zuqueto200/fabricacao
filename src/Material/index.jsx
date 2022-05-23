@@ -1,50 +1,84 @@
 import React, { useEffect, useState } from "react";
 import './index.css'
 import { useMateriaPrima } from "../context/materiaprima";
-
-
-export function Material() {
  
+export function Material() {
+
   const { materiaPrima, setMateriaPrima } = useMateriaPrima()
-  var saldo = materiaPrima.user.saldo
+ 
+
+ 
 
 
+  function FnVender(e) {
 
-  // function FnVender() {
-  //   if (materiaPrima.papelao.estoque > 0) {+
+    if (materiaPrima.materiaprima[e.id].estoque > 0) {
 
-  //     setSaldo(saldo + materiaPrima.papelao.venda)
-  //     materiaPrima.papelao.estoque--
-  //   }
-  // }
+      setMateriaPrima(prevState => ({
+        ...prevState,
 
-  
+        user: prevState.user = {saldo: materiaPrima.user.saldo + e.venda},
+
+        materiaprima: prevState.materiaprima.map(item => {
+          if (item.id !== e.id) {
+            return item
+          }
+
+          return {
+            ...item,
+            estoque: item.estoque - 1,
+          }
+        })
+      }))
+
+    }
+  }
+
+
   function FnCompra(e) {
 
-    setMateriaPrima(materiaPrima, { ...e, estoque: e.estoque++ })
-    console.log(materiaPrima)
+    if (materiaPrima.user.saldo > e.compra) {
 
-  }  
 
-  useEffect(() => {
+      setMateriaPrima(prevState => ({
+        ...prevState,
 
+       user: {saldo: materiaPrima.user.saldo - e.compra},
+
+        materiaprima: prevState.materiaprima.map(item => {
+          if (item.id !== e.id) {
+            return item
+          }
+
+          return {
+            ...item,
+            estoque: item.estoque + 1,
+
+          }
+        })
+      }))
+    } 
+  }
+
+
+ useEffect(() => {
  
-  }, [])
-
-
-
-
+       }, [])
+  
 
   return (
-    <div className="App">
-      {/* <p className="saldo">
-        {' $ ' +  saldo.toFixed(2)}
-      </p> */}
+    <div className="divMaterial">
+
+
+
+      <p className="saldo">
+        {' $ ' + materiaPrima.user.saldo.toFixed(2)}
+      </p>
 
 
       <div className='materiaPrima'>
         {materiaPrima.materiaprima.map((e, i) => (
-
+          
           <div className='cardMateriaPrima' key={i}>
 
 
@@ -54,8 +88,12 @@ export function Material() {
             </div>
 
 
+
             <img className='imgMateriaPrima'
-              src={e.img} />
+                src={process.env.PUBLIC_URL + '/MateriaPrima/' + e.img}/>
+
+
+
 
 
 
@@ -63,7 +101,7 @@ export function Material() {
             <div className='divCompraVende'>
 
               <div className='divVende' onClick={() => {
-                // FnVender()
+                FnVender(e)
 
               }}>
                 Vender

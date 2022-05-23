@@ -1,25 +1,59 @@
 {
   "user": {
-    "saldo": 2.0
+    "saldo": 50.0
   },
-
   "materiaprima": [
     {
       "id": 0,
       "nome": "Papelão",
-      "img": "../Materia Prima/papelao.png",
-      "estoque": 0,
+      "img": "papelao.png",
+      "estoque": 10,
       "venda": 0.18,
       "compra": 0.24
     },
-
     {
       "id": 1,
       "nome": "Plástico",
-      "img": "../Materia Prima/plastico.png",
+      "img": "plastico.png",
       "estoque": 0,
-      "venda": 0.30,
+      "venda": 0.3,
       "compra": 0.42
+    },
+    {
+      "id": 2,
+      "nome": "Ferro",
+      "img": "ferro.png",
+      "estoque": 10,
+      "venda": 1.4,
+      "compra": 1.55
+    },
+    {
+      "id": 3,
+      "nome": "Cobre",
+      "img": "cobre.png",
+      "estoque": 0,
+      "venda": 26.4,
+      "compra": 32.55
+    }
+  ],
+  "fabricacao": [
+    {
+      "id": 0,
+      "nome": "Caixa",
+      "img": "caixa.png",
+      "estoque": 0,
+      "venda": 0.49,
+      "fabricar": 0.18,
+      "material": [
+        {
+          "id": 0,
+          "estoque": 6
+        },
+        {
+          "id": 2,
+          "estoque": 3
+        }
+      ]
     }
   ]
 }
