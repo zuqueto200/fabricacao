@@ -72,9 +72,9 @@ export function Material() {
 
 
       <p className="saldo">
-        {' $ ' + materiaPrima.user.saldo.toFixed(2)}
+        {' $  ' + materiaPrima.user.saldo.toFixed(2)}
       </p>
-
+ 
 
       <div className='materiaPrima'>
         {materiaPrima.materiaprima.map((e, i) => (
@@ -87,11 +87,10 @@ export function Material() {
               <div className='estoqueMateriaPrima'>{e.estoque}</div>
             </div>
 
-
+     
 
             <img className='imgMateriaPrima'
                 src={process.env.PUBLIC_URL + '/MateriaPrima/' + e.img}/>
-
 
 
 
