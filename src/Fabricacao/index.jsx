@@ -10,10 +10,7 @@ export function Fabricacao() {
   function FNTESTE() {
 
 
- setMateriaPrima((e)=> e, console.log(e))
-
-
-
+ 
 
   }
 
