@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from "react";
-import './index.css'
 import { useMateriaPrima } from "../context/materiaprima";
-import json from '../materiaprima.json'
 
 export function Fabricacao() {
 
   const { materiaPrima, setMateriaPrima } = useMateriaPrima()
 
-  function FNTESTE() {
 
 
- 
-
-  }
 
 
- 
+
 
   function FnFabricar(e) {
 
-    if (materiaPrima.user.saldo > e.fabricar) {
+    if (materiaPrima.user.saldo >= e.fabricar) {
 
       var liberaFabricacao = true
       for (let x = 0; x < e.material.length; x++) {
@@ -40,27 +34,21 @@ export function Fabricacao() {
           user: { saldo: materiaPrima.user.saldo - e.fabricar },
 
 
-
-
-
-
-
           //////////////////////////
 
 
-          // materiaprima: prevState.materiaprima.map(item => {
+          materiaprima: prevState.materiaprima.map((item) => {
+            const materialStock = e.material.find((mat) => item.id === mat.id);
 
-          //    e.material.map((mat) => {
+            if (materialStock?.id === item.id) {
+              return {
+                ...item,
+                estoque: item.estoque - materialStock.estoque,
+              };
+            }
 
-          //     if (item.id === e.mat) {
-          //       return { ...item, estoque: item.estoque - mat.estoque }
-          //     }
-          //   }
-
-          //   )
-
-          // }
-          // ),
+            return item;
+          }),
 
 
           ////////////////////////// 
@@ -85,19 +73,36 @@ export function Fabricacao() {
 
 
 
-  useEffect(() => {
-    FNTESTE()
-    // console.log('USE EFF = ', materiaPrima.materiaprima)
-  }, [])
 
 
 
 
 
+  function FnVender(e) {
+
+    if (materiaPrima.fabricacao[e.id].estoque > 0) {
+
+      setMateriaPrima(prevState => ({
+        ...prevState,
+
+        user: prevState.user = { saldo: materiaPrima.user.saldo + e.venda * e.estoque },
+
+        fabricacao: prevState.fabricacao.map(item => {
+          if (item.id !== e.id) {
+            return item
+          }
+
+          return {
+            ...item,
+            estoque: item.estoque = 0,
+          }
+        })
+      }))
+
+    }
 
 
-
-  function FnVender() { }
+  }
 
   return (
     <div className="divMaterial">
@@ -109,7 +114,7 @@ export function Fabricacao() {
 
 
         <div className='materiaPrima'>
-          {materiaPrima.fabricacao.map((e, i) => (
+          {materiaPrima.fabricacao.map((e, i) => e.trava === false && (
 
             <div className='cardMateriaPrima' key={i}>
 
@@ -120,11 +125,30 @@ export function Fabricacao() {
               </div>
 
 
+              <div className="imgLista">
+                <img className='imgMateriaPrima'
+                  src={process.env.PUBLIC_URL + '/MateriaPrima/' + e.img} />
 
-              <img className='imgMateriaPrima'
-                src={process.env.PUBLIC_URL + '/MateriaPrima/' + e.img} />
 
+                <div className="listaItem">
 
+                  {e.material.map((item) => 
+
+                    <div className="linhaItem" key={item.id}>
+                      <div>
+                        {item.nome}
+                      </div>
+                      <div className="estoqueItem">
+
+                        {item.estoque + '/'}
+                        {materiaPrima.materiaprima[item.id].estoque}
+                      </div>
+                    </div>
+
+                  )}
+
+                </div>
+              </div>
 
 
 
@@ -136,8 +160,10 @@ export function Fabricacao() {
                   FnVender(e)
 
                 }}>
-                  Vender
-                  <div>{'$ ' + e.venda}</div>
+
+                  <div>{'$ ' + e.venda.toFixed(2)}</div>
+                  <div>{'$ ' + (e.venda * e.estoque).toFixed(2)}</div>
+
                 </div>
 
 
@@ -145,7 +171,7 @@ export function Fabricacao() {
                   FnFabricar(e)
                 }}>
                   FABRICAR
-                  <div>{'$ ' + e.fabricar}</div>
+                  <div>{'$ ' + e.fabricar.toFixed(2)}</div>
 
                 </div>
               </div>

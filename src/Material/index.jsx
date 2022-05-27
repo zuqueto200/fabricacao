@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
-import './index.css'
 import { useMateriaPrima } from "../context/materiaprima";
- 
+
 export function Material() {
 
   const { materiaPrima, setMateriaPrima } = useMateriaPrima()
- 
-
- 
-
 
   function FnVender(e) {
 
@@ -17,7 +12,7 @@ export function Material() {
       setMateriaPrima(prevState => ({
         ...prevState,
 
-        user: prevState.user = {saldo: materiaPrima.user.saldo + e.venda},
+        user: { saldo: materiaPrima.user.saldo + e.venda },
 
         materiaprima: prevState.materiaprima.map(item => {
           if (item.id !== e.id) {
@@ -43,7 +38,7 @@ export function Material() {
       setMateriaPrima(prevState => ({
         ...prevState,
 
-       user: {saldo: materiaPrima.user.saldo - e.compra},
+        user: { saldo: materiaPrima.user.saldo - e.compra },
 
         materiaprima: prevState.materiaprima.map(item => {
           if (item.id !== e.id) {
@@ -57,29 +52,24 @@ export function Material() {
           }
         })
       }))
-    } 
+    }
   }
 
 
- useEffect(() => {
- 
-       }, [])
-  
+  useEffect(() => {
+
+  }, [])
+
 
   return (
     <div className="divMaterial">
-
-
-
-      <p className="saldo">
-        {' $  ' + materiaPrima.user.saldo.toFixed(2)}
-      </p>
- 
-
       <div className='materiaPrima'>
-        {materiaPrima.materiaprima.map((e, i) => (
-          
+        {materiaPrima.materiaprima.map((e, i) => e.trava === false && (
+
           <div className='cardMateriaPrima' key={i}>
+
+
+
 
 
             <div className='nomeEstoque'>
@@ -87,10 +77,10 @@ export function Material() {
               <div className='estoqueMateriaPrima'>{e.estoque}</div>
             </div>
 
-     
+
 
             <img className='imgMateriaPrima'
-                src={process.env.PUBLIC_URL + '/MateriaPrima/' + e.img}/>
+              src={process.env.PUBLIC_URL + '/MateriaPrima/' + e.img} />
 
 
 
@@ -104,7 +94,7 @@ export function Material() {
 
               }}>
                 Vender
-                <div>{'$ ' + e.venda}</div>
+                <div>{'$ ' + e.venda.toFixed(2)}</div>
               </div>
 
 
@@ -112,11 +102,12 @@ export function Material() {
                 FnCompra(e)
               }}>
                 Comprar
-                <div>{'$ ' + e.compra}</div>
+                <div>{'$ ' + e.compra.toFixed(2)}</div>
 
               </div>
             </div>
           </div>
+
         ))}
       </div>
     </div>

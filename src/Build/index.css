@@ -1,4 +1,88 @@
-.divBuild{ 
-    margin: 5px;
-    
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 10px;
+  padding: 0;
+  background-color: rgb(80, 80, 80);
+  font-size: 12px;
+}
+.divMaterial {
+  display: flex;
+}
+.saldo,.objetivo {
+  background-color: rgb(70, 70, 70);
+  color: rgb(211, 209, 209);
+   padding: 0 10px;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+}
+.materiaPrima {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid gray;
+  width: 520px;
+  user-select: none;
+}
+.cardMateriaPrima {
+  display: flex;
+  flex-direction: column;
+
+  margin: 5px;
+  background-color: rgb(43, 42, 42);
+}
+.nomeEstoque {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  color: rgb(158, 158, 158);
+}
+.imgLista {
+  display: flex;
+  position: relative;
+}
+.imgMateriaPrima {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background-color: rgb(68, 67, 67);
+}
+.divCompraVende {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+}
+.divCompra {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+
+  background-color: rgb(76, 250, 91);
+}
+.divVende {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  background-color: rgb(238, 56, 56);
+}
+.listaItem {
+  color: rgba(255, 255, 255, 0.658);
+  position: absolute;
+  width: 100%;
+  bottom: 5px;
+  margin: 0;
+}
+.linhaItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  font-size: 13px;
+  background-color: rgba(0, 0, 0, 0.301);
 }
