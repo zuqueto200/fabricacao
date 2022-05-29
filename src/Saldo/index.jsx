@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMateriaPrima } from "../context/materiaprima";
+var vSaldo = 2
 var contaObjetivo = 0;
 const textoObjetivo = [
   ' Obtenha um capital de $ 10.00',
@@ -17,9 +18,6 @@ export function Saldo() {
 
   const { materiaPrima, setMateriaPrima } = useMateriaPrima()
   const [objetivo, setObjetivo] = useState(textoObjetivo[0])
-
-
-
 
 
 
@@ -85,7 +83,7 @@ export function Saldo() {
               ...item,
               trava: item.trava = false,
             }
-          } 
+          }
 
           return item
         }),
@@ -110,8 +108,9 @@ export function Saldo() {
     if (materiaPrima.fabricacao[0].estoque === 0 && contaObjetivo === 7) { contaObjetivo = 8 }
 
     if (materiaPrima.fabricacao[1].estoque >= 2 && contaObjetivo === 8) { contaObjetivo = 9 }
-    if (materiaPrima.fabricacao[1].estoque === 0 && contaObjetivo === 9) { contaObjetivo = 10 
-    
+    if (materiaPrima.fabricacao[1].estoque === 0 && contaObjetivo === 9) {
+      contaObjetivo = 10
+
       setObjetivo(textoObjetivo[4])
 
 
@@ -124,7 +123,7 @@ export function Saldo() {
               ...item,
               trava: item.trava = false,
             }
-          } 
+          }
 
           return item
         }),
@@ -139,17 +138,17 @@ export function Saldo() {
           return item
         })
       }))
-    
-    
+
+
     }
 
     if (materiaPrima.user.saldo >= 10000 && contaObjetivo === 10) {
       setObjetivo(textoObjetivo[5])
-    
-    }
-      
 
- 
+    }
+
+
+
 
 
   }
@@ -160,7 +159,27 @@ export function Saldo() {
 
 
 
+  function FnTrans() {
 
+    if (vSaldo >= materiaPrima.user.saldo) {
+      document.getElementsByClassName('saldo')[0].classList.add('transMenos')
+      setTimeout(() => {
+
+        document.getElementsByClassName('saldo')[0].classList.remove('transMenos')
+      }, 300);
+    }
+    if (vSaldo <= materiaPrima.user.saldo) {
+      document.getElementsByClassName('saldo')[0].classList.add('transMais')
+      setTimeout(() => {
+
+        document.getElementsByClassName('saldo')[0].classList.remove('transMais')
+      }, 300);
+    }
+
+
+    vSaldo = materiaPrima.user.saldo
+
+  }
 
 
 
@@ -169,6 +188,7 @@ export function Saldo() {
   useEffect(() => {
     console.log(contaObjetivo)
     Fnlevel()
+    FnTrans()
 
   }, [materiaPrima.user.saldo])
 
@@ -178,7 +198,7 @@ export function Saldo() {
 
 
 
-      <p className="saldo">
+      <p className="saldo" >
         {' $  ' + materiaPrima.user.saldo.toFixed(2)}
       </p>
 

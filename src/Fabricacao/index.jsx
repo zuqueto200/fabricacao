@@ -108,77 +108,76 @@ export function Fabricacao() {
     <div className="divMaterial">
 
 
-      <div className="divMaterial">
 
 
 
 
-        <div className='materiaPrima'>
-          {materiaPrima.fabricacao.map((e, i) => e.trava === false && (
+      <div className='materiaPrima'>
+        {materiaPrima.fabricacao.map((e, i) => e.trava === false && (
 
-            <div className='cardMateriaPrima' key={i}>
-
-
-              <div className='nomeEstoque'>
-                < div className='nomeMateriaPrima' > {e.nome}</div>
-                <div className='estoqueMateriaPrima'>{e.estoque}</div>
-              </div>
+          <div className='cardMateriaPrima' key={i}>
 
 
-              <div className="imgLista">
-                <img className='imgMateriaPrima'
-                  src={process.env.PUBLIC_URL + '/MateriaPrima/' + e.img} />
+            <div className='nomeEstoque'>
+              < div className='nomeMateriaPrima' > {e.nome}</div>
+              <div className='estoqueMateriaPrima'>{e.estoque}</div>
+            </div>
 
 
-                <div className="listaItem">
+            <div className="imgLista">
+              <img className='imgMateriaPrima'
+                src={process.env.PUBLIC_URL + '/MateriaPrima/' + e.img} />
 
-                  {e.material.map((item) => 
 
-                    <div className="linhaItem" key={item.id}>
-                      <div>
-                        {item.nome}
-                      </div>
-                      <div className="estoqueItem">
+              <div className="listaItem">
 
-                        {item.estoque + '/'}
-                        {materiaPrima.materiaprima[item.id].estoque}
-                      </div>
+                {e.material.map((item) =>
+
+                  <div className="linhaItem" key={item.id}>
+                    <div>
+                      {item.nome}
                     </div>
+                    <div className="estoqueItem">
 
-                  )}
+                      {item.estoque + '/'}
+                      {materiaPrima.materiaprima[item.id].estoque}
+                    </div>
+                  </div>
 
-                </div>
-              </div>
+                )}
 
-
-
-
-
-              <div className='divCompraVende'>
-
-                <div className='divVende' onClick={() => {
-                  FnVender(e)
-
-                }}>
-
-                  <div>{'$ ' + e.venda.toFixed(2)}</div>
-                  <div>{'$ ' + (e.venda * e.estoque).toFixed(2)}</div>
-
-                </div>
-
-
-                <div className='divCompra' onClick={() => {
-                  FnFabricar(e)
-                }}>
-                  FABRICAR
-                  <div>{'$ ' + e.fabricar.toFixed(2)}</div>
-
-                </div>
               </div>
             </div>
-          ))}
-        </div>
+
+
+
+
+
+            <div className='divCompraVende'>
+
+              <div className='divVende' onClick={() => {
+                FnVender(e)
+
+              }}>
+
+                <div>{'$ ' + e.venda.toFixed(2)}</div>
+                <div>{'$ ' + (e.venda * e.estoque).toFixed(2)}</div>
+
+              </div>
+
+
+              <div className='divCompra' onClick={() => {
+                FnFabricar(e)
+              }}>
+                FABRICAR
+                <div>{'$ ' + e.fabricar.toFixed(2)}</div>
+
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
+
 
     </div>
   );

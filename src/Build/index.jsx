@@ -13,6 +13,9 @@ export function Build() {
 
     return (
         <div className="divBuild">
+           
+ 
+
             <Saldo />
             <Material />
             <Fabricacao />

@@ -9,7 +9,18 @@ body {
 .divMaterial {
   display: flex;
 }
-.saldo,.objetivo {
+.saldo {
+  background-color: rgb(70, 70, 70);
+  color: rgb(211, 209, 209);
+   padding: 0 10px;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  min-width: 100px;
+}
+.objetivo {
   background-color: rgb(70, 70, 70);
   color: rgb(211, 209, 209);
    padding: 0 10px;
@@ -61,8 +72,8 @@ body {
   justify-content: center;
   align-items: center;
   width: 50px;
-
   background-color: rgb(76, 250, 91);
+
 }
 .divVende {
   display: flex;
@@ -71,6 +82,10 @@ body {
   align-items: center;
   width: 50px;
   background-color: rgb(238, 56, 56);
+}
+
+.divCompra:active,.divVende:active{
+  background-color: rgb(255, 255, 255);
 }
 .listaItem {
   color: rgba(255, 255, 255, 0.658);
@@ -85,4 +100,32 @@ body {
   padding: 0 5px;
   font-size: 13px;
   background-color: rgba(0, 0, 0, 0.301);
+}
+.transMais{  
+  font-weight: 900;
+  animation: transMais 300ms linear; 
+}
+@keyframes transMais {
+  0%{
+     
+    color: rgb(13, 255, 0);
+
+  }
+  100%{
+  }
+  
+}
+.transMenos{  
+  font-weight: 900;
+  animation: transMenos 300ms linear; 
+}
+@keyframes transMenos {
+  0%{
+     
+    color: rgb(255, 0, 0);
+
+  }
+  100%{
+  }
+  
 }
